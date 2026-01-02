@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jeff Bezos: E-ticaret ve Uzay Girişimcisi</title>
+  <style>
+    :root{
+      --bg: linear-gradient(180deg, #0f172a, #1e293b);
+      --glass: rgba(255,255,255,0.22);
+      --card: rgba(255,255,255,0.75);
+      --accent: #2563eb;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .wrap { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    .hero {
+      display: grid; grid-template-columns: 220px 1fr; gap: 1.25rem;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+    .hero img {
+      width: 100%; aspect-ratio: 1/1; object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.55);
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+    }
+    .hero h1 {
+      margin: 0 0 0.4rem; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+      line-height: 1.15; letter-spacing: -0.01em;
+    }
+    .badges { margin: 0.25rem 0 0.5rem; }
+    .badge {
+      display: inline-block; padding: 0.35rem 0.6rem; margin-right: 0.4rem; margin-bottom: 0.4rem;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(37,99,235,0.45); font-size: 0.75rem;
+    }
+    .muted { color: #e2e8f0; }
+
+    .card {
+      margin-top: 1.25rem;
+      background: var(--card);
+      color: var(--text);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.5);
+      overflow: hidden;
+    }
+    .card header {
+      padding: 0.9rem 1.25rem;
+      background: rgba(37,99,235,0.12);
+      color: #fff;
+      font-weight: 700;
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+    .card .body { padding: 1rem 1.25rem; }
+    .card h2 { color: var(--accent); font-size: 1.25rem; line-height: 1.25; margin: 0 0 0.5rem; }
+    .card p { margin: 0.3rem 0 0.8rem; }
+    .list { display: grid; gap: 0.6rem; margin-top: 0.6rem; }
+    .list li { list-style: none; padding-left: 0.5rem; border-left: 3px solid #60a5fa; }
+
+    .timeline { display: grid; gap: 0.75rem; margin-top: 0.5rem; }
+    .timeline-item {
+      display: grid; grid-template-columns: 110px 1fr; gap: 0.75rem;
+      align-items: start;
+    }
+    .time {
+      background: #dbeafe; color: #1e3a8a; padding: 0.35rem 0.5rem; border-radius: 8px; font-weight: 700;
+      text-align: center; min-width: 90px;
+    }
+    .desc { color: var(--text); }
+
+    blockquote {
+      margin: 0.9rem 0; padding: 0.75rem 1rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(37,99,235,0.08); color: #1f2937;
+    }
+
+    .fade { opacity: 0; transform: translateY(12px); transition: opacity 0.5s, transform 0.5s; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 780px) {
+      .hero { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+    }
+
+    .ana{ position: fixed; bottom: 20px; right: 20px; font-size: 18px; color: white; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <main class="wrap">
+    <section class="hero">
+      <img src="resimler/jeffbezos.png" alt="Jeff Bezos">
+      <div>
+        <h1>Jeff Bezos: E-ticaret ve Uzay Girişimcisi</h1>
+        <div class="badges">
+          <span class="badge">Amazon</span>
+          <span class="badge">Blue Origin</span>
+          <span class="badge">Washington Post</span>
+        </div>
+        <p class="muted">1964– • ABD • E-ticaret, girişimcilik ve uzay teknolojileri</p>
+      </div>
+    </section>
+
+    <article id="dynamic" class="card fade" aria-live="polite" aria-atomic="true"></article>
+
+    <article id="etki" class="card">
+      <header>Miras ve Etki</header>
+      <div class="body">
+        <h2>Girişimcilik ve inovasyon</h2>
+        <p>
+          Jeff Bezos, e-ticaret ve lojistik alanlarında devrim yaratmıştır. Amazon’un küresel etkisi ve Blue Origin aracılığıyla
+          uzay yolculuğu vizyonu, modern girişimcilik ve teknoloji anlayışını yeniden şekillendirmiştir.
+        </p>
+        <blockquote>“Müşteri odaklılık ve uzun vadeli vizyon, inovasyonun temel taşlarıdır.”</blockquote>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    const content = {
+      hikaye: {
+        header: "Kısa Hikâye",
+        html: `
+          <div class="body">
+            <h2>Erken yaşam ve eğitim</h2>
+            <p>
+              Jeff Bezos, New Mexico’da doğdu. Princeton Üniversitesi’nde bilgisayar mühendisliği ve elektrik mühendisliği okudu.
+              Üniversite sonrası Wall Street’te çalıştı ve internetin potansiyelini fark ederek e-ticarete yöneldi.
+            </p>
+            <h2>Amazon’un kuruluşu</h2>
+            <p>
+              1994 yılında Amazon’u kurdu. Kitap satışına başlayan şirket, hızla dünyanın en büyük e-ticaret platformlarından biri haline geldi.
+            </p>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="time">1964</span>
+                <p class="desc">ABD’de doğum.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1994</span>
+                <p class="desc">Amazon’u kurdu.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1999</span>
+                <p class="desc">Washington Post’u satın aldı.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">2000</span>
+                <p class="desc">Blue Origin ile uzay girişimlerine başladı.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      calismalar: {
+        header: "Çalışmalar ve Katkılar",
+        html: `
+          <div class="body">
+            <h2>E-ticaret ve lojistik</h2>
+            <p>
+              Amazon ile çevrimiçi alışverişi yaygınlaştırdı, depolama ve dağıtım sistemlerinde inovasyonlar getirdi.
+            </p>
+            <h2>Uzay ve medya</h2>
+            <p>
+              Blue Origin aracılığıyla uzay taşımacılığı ve keşif projeleri başlattı. Washington Post yatırımıyla medya ve gazetecilik alanında etkin oldu.
+            </p>
+            <ul class="list">
+              <li>Amazon: E-ticaret ve lojistik inovasyonu</li>
+              <li>Blue Origin: Uzay teknolojileri ve roket projeleri</li>
+              <li>Washington Post: Medya ve gazetecilik yatırımı</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    function loadSection(key) {
+      const container = document.getElementById('dynamic');
+      const item = content[key];
+      if (!item) return;
+      container.classList.remove('show');
+      setTimeout(() => {
+        container.innerHTML = `<header>${item.header}</header>${item.html}`;
+        container.classList.add('show');
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+
+    loadSection('hikaye');
+  </script>
+
+  <a href="giris.html" class="ana">Ana Sayfa</a>
+
+</body>
+</html>

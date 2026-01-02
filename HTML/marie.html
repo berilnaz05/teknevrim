@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marie Curie: Bilim ve Keşiflerin Öncüsü</title>
+  <style>
+    :root{
+      --bg: linear-gradient(180deg, #0f172a, #1e293b);
+      --glass: rgba(255,255,255,0.22);
+      --card: rgba(255,255,255,0.75);
+      --accent: #dc2626; /* kırmızı vurgu */
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      color: #fff;
+      line-height: 1.6;
+    }
+    .navbar {
+      position: sticky; top: 0;
+      display: flex; gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+    }
+    .navbar a { color: #fff; text-decoration: none; font-weight: 600; }
+    .wrap { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    .hero {
+      display: grid; grid-template-columns: 220px 1fr; gap: 1.25rem;
+      background: var(--glass); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.4); border-radius: 18px; padding: 1rem;
+    }
+    .hero img { width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,0.55); }
+    .hero h1 { margin: 0 0 0.4rem; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem); }
+    .badge { display: inline-block; padding: 0.35rem 0.6rem; margin: 0.2rem; border-radius: 999px;
+             border: 1px solid rgba(255,255,255,0.6); background: rgba(220,38,38,0.45); font-size: 0.75rem; }
+    .muted { color: #e2e8f0; }
+    .card { margin-top: 1.25rem; background: var(--card); color: var(--text);
+            border-radius: 18px; border: 1px solid rgba(255,255,255,0.5); }
+    .card header { padding: 0.9rem 1.25rem; background: rgba(220,38,38,0.12); color: #fff; font-weight: 700; }
+    .card .body { padding: 1rem 1.25rem; }
+    .card h2 { color: var(--accent); font-size: 1.25rem; margin: 0 0 0.5rem; }
+    blockquote { margin: 0.9rem 0; padding: 0.75rem 1rem; border-left: 4px solid var(--accent);
+                 background: rgba(220,38,38,0.08); color: #1f2937; }
+    .actions { margin-top: 0.5rem; }
+    .btn { border: none; cursor: pointer; border-radius: 8px; padding: 0.55rem 0.9rem; font-weight: 600; }
+    .btn-primary { background: #dc2626; color: #fff; }
+    .btn-outline { background: transparent; color: #dc2626; border: 2px solid #dc2626; }
+    .fade { opacity: 0; transform: translateY(12px); transition: opacity 0.5s, transform 0.5s; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+    @media (max-width: 780px) { .hero { grid-template-columns: 1fr; } }
+     .prev{
+        position: fixed;
+        bottom: 20px;
+        left:20px;
+        color:#fff;
+        font-size: 18px;
+        text-decoration: none;
+    }
+    .ana{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        color: white;
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+
+  <main class="wrap">
+    <section class="hero">
+      <img src="resimler/maria-curie.jpg">
+      <div>
+        <h1>Marie Curie: Bilim ve keşiflerin öncüsü</h1>
+        <span class="badge">Radyum</span>
+        <span class="badge">Polonyum</span>
+        <span class="badge">Nobel Ödülleri</span>
+        <p class="muted">1867–1934 • Paris • Fizik ve Kimya</p>
+        
+      </div>
+    </section>
+
+    <article id="dynamic" class="card fade"></article>
+
+    <article id="miras" class="card">
+      <header>Miras ve Etki</header>
+      <div class="body">
+        <h2>Bilimde kadınların öncüsü</h2>
+        <p>
+          Marie Curie, iki farklı alanda Nobel Ödülü alan ilk bilim insanı oldu. Çalışmaları modern tıpta radyoterapiye ve
+          nükleer fizik araştırmalarına yön verdi. Kadınların bilimdeki rolünü güçlendiren bir sembol haline geldi.
+        </p>
+        <blockquote>“Bilimde büyük ilerlemeler, sabır ve merakla doğar.”</blockquote>
+      </div>
+    </article>
+
+    
+  </main>
+
+  <script>
+    const content = {
+      hikaye: {
+        header: "Kısa hikâye",
+        html: `
+          <div class="body">
+            <h2>Erken yaşam</h2>
+            <p>Marie Curie, Polonya’da doğdu ve eğitim için Paris’e gitti. Sorbonne’da fizik ve kimya okudu.</p>
+            <h2>Bilimsel yolculuk</h2>
+            <p>Eşi Pierre Curie ile birlikte radyoaktif elementler üzerine çalıştı. Radyum ve polonyumu keşfetti.</p>
+          </div>
+        `
+      },
+      calismalar: {
+        header: "Çalışmalar",
+        html: `
+          <div class="body">
+            <h2>Radyum ve Polonyum keşfi</h2>
+            <p>Marie ve Pierre Curie, radyoaktiviteyi araştırarak iki yeni element keşfettiler: radyum ve polonyum.</p>
+            <h2>Nobel Ödülleri</h2>
+            <p>1903’te Fizik, 1911’de Kimya Nobel Ödülü aldı. İki farklı alanda Nobel alan ilk kişi oldu.</p>
+          </div>
+        `
+      }
+    };
+
+    
+  </script>
+   <body>
+    <a href="giris.html" class="ana">Ana Sayfa</a>
+    <a href="kisiler.html" class="prev">Önceki Sayfa</a>
+  </body>
+</body>
+</html>

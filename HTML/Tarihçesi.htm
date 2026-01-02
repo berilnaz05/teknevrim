@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Teknolojinin Evrimi — Zaman Çizelgesi</title>
+
+<style>
+  body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0b152d;
+    color:white;
+    padding:40px;
+  }
+
+  h1{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:32px;
+  }
+
+  .timeline{
+    position:relative;
+    max-width:800px;
+    margin:0 auto;
+    padding-left:40px; /* yılı biraz sağa itmek için */
+  }
+
+  /* dikey çizgi */
+  .timeline::before{
+    content:"";
+    position:absolute;
+    left:10px; /* çizgiyi sola çek */
+    top:0;
+    width:4px;
+    height:100%;
+    background:#4dd0ff;
+    border-radius:4px;
+  }
+
+  .item{
+    margin-bottom:40px;
+    position:relative;
+  }
+
+  /* nokta */
+  .item::before{
+    content:"";
+    position:absolute;
+    left:-12px; /* daireyi sola çek */
+    top:10px;
+    width:16px;
+    height:16px;
+    background:#4dd0ff;
+    border-radius:50%;
+    box-shadow:0 0 10px #4dd0ff;
+  }
+
+  .year{
+    font-size:20px;
+    font-weight:bold;
+    color:#8ad5ff;
+    margin-bottom:6px;
+    margin-left:12px; /* daireyi kapatmaması için biraz sağa kaydır */
+  }
+
+  .desc{
+    background:rgba(255,255,255,0.05);
+    padding:14px 18px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.08);
+    line-height:1.4;
+  }
+
+</style>
+</head>
+
+<body>
+
+<h1>Teknolojinin Evrimi — Zaman Çizelgesi</h1>
+
+<div class="timeline">
+
+  <div class="item">
+    <div class="year">M.Ö. 3500 — Tekerleğin İcadı</div>
+    <div class="desc">Ulaşım tarihinde dev bir sıçrama sağlayan en önemli icatlardan biri.</div>
+  </div>
+
+  <div class="item">
+    <div class="year">1837 — Telgraf</div>
+    <div class="desc">Uzak mesafelerde hızlı iletişimi mümkün kılan ilk sistem.</div>
+  </div>
+
+  <div class="item">
+    <div class="year">1876 — Telefon</div>
+    <div class="desc">Alexander Graham Bell tarafından geliştirilen telefon, sesli iletişimde çığır açtı.</div>
+  </div>
+
+  <div class="item">
+    <div class="year">1946 — ENIAC</div>
+    <div class="desc">Dünyanın ilk elektronik genel amaçlı bilgisayarı.</div>
+  </div>
+
+  <div class="item">
+    <div class="year">1959 — Mikroçip</div>
+    <div class="desc">Bilgisayarların küçülmesini ve güçlenmesini sağlayan devrim niteliğinde bir buluş.</div>
+  </div>
+
+  <div class="item">
+    <div class="year">1969 — ARPANET</div>
+    <div class="desc">Günümüzdeki internetin temelini oluşturan ilk ağ sistemi.</div>
+  </div>
+
+  <div class="item">
+    <div class="year">1991 — World Wide Web</div>
+    <div class="desc">Tim Berners-Lee tarafından geliştirilen WWW, modern web sitelerinin doğuşuna yol açtı.</div>
+  </div>
+
+  <div class="item">
+    <div class="year">2007 — Akıllı Telefon Çağı</div>
+    <div class="desc">iPhone'un çıkışıyla mobil teknolojide yeni bir dönem başladı.</div>
+  </div>
+
+  <div class="item">
+    <div class="year">2020+ — Yapay Zekâ Çağı</div>
+    <div class="desc">Derin öğrenme, otonom sistemler ve üretken yapay zekâ ile teknolojide yeni bir devrim.</div>
+  </div>
+
+</div>
+
+</body>
+</html>

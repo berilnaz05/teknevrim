@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konrad Zuse: Bilgisayarın Babası</title>
+  <style>
+    :root{
+      --bg: linear-gradient(180deg, #0f172a, #1e293b);
+      --glass: rgba(255,255,255,0.22);
+      --card: rgba(255,255,255,0.75);
+      --accent: #2563eb;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .wrap { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    .hero {
+      display: grid; grid-template-columns: 220px 1fr; gap: 1.25rem;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+    .hero img {
+      width: 100%; aspect-ratio: 1/1; object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.55);
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+    }
+    .hero h1 {
+      margin: 0 0 0.4rem; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+      line-height: 1.15; letter-spacing: -0.01em;
+    }
+    .badges { margin: 0.25rem 0 0.5rem; }
+    .badge {
+      display: inline-block; padding: 0.35rem 0.6rem; margin-right: 0.4rem; margin-bottom: 0.4rem;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(37,99,235,0.45); font-size: 0.75rem;
+    }
+    .muted { color: #e2e8f0; }
+
+    .card {
+      margin-top: 1.25rem;
+      background: var(--card);
+      color: var(--text);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.5);
+      overflow: hidden;
+    }
+    .card header {
+      padding: 0.9rem 1.25rem;
+      background: rgba(37,99,235,0.12);
+      color: #fff;
+      font-weight: 700;
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+    .card .body { padding: 1rem 1.25rem; }
+    .card h2 { color: var(--accent); font-size: 1.25rem; line-height: 1.25; margin: 0 0 0.5rem; }
+    .card p { margin: 0.3rem 0 0.8rem; }
+    .list { display: grid; gap: 0.6rem; margin-top: 0.6rem; }
+    .list li { list-style: none; padding-left: 0.5rem; border-left: 3px solid #60a5fa; }
+
+    .timeline { display: grid; gap: 0.75rem; margin-top: 0.5rem; }
+    .timeline-item {
+      display: grid; grid-template-columns: 110px 1fr; gap: 0.75rem;
+      align-items: start;
+    }
+    .time {
+      background: #dbeafe; color: #1e3a8a; padding: 0.35rem 0.5rem; border-radius: 8px; font-weight: 700;
+      text-align: center; min-width: 90px;
+    }
+    .desc { color: var(--text); }
+
+    blockquote {
+      margin: 0.9rem 0; padding: 0.75rem 1rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(37,99,235,0.08); color: #1f2937;
+    }
+
+    .fade { opacity: 0; transform: translateY(12px); transition: opacity 0.5s, transform 0.5s; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 780px) {
+      .hero { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+    }
+
+    .ana{ position: fixed; bottom: 20px; right: 20px; font-size: 18px; color: white; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <main class="wrap">
+    <section class="hero">
+      <img src="resimler/kondradzuse.png" alt="Konrad Zuse">
+      <div>
+        <h1>Konrad Zuse: Bilgisayarın Babası</h1>
+        <div class="badges">
+          <span class="badge">Z3</span>
+          <span class="badge">Bilgisayar Mühendisliği</span>
+          <span class="badge">Programlanabilir Bilgisayar</span>
+        </div>
+        <p class="muted">1910–1995 • Almanya • Mühendis, mucit ve bilgisayar öncüsü</p>
+      </div>
+    </section>
+
+    <article id="dynamic" class="card fade" aria-live="polite" aria-atomic="true"></article>
+
+    <article id="etki" class="card">
+      <header>Miras ve Etki</header>
+      <div class="body">
+        <h2>Bilgisayarın gelişimine öncülük</h2>
+        <p>
+          Konrad Zuse, dünyanın ilk programlanabilir bilgisayarlarından biri olan Z3’ü tasarladı.
+          Modern bilgisayar biliminin temel taşlarını atarak hesaplama teknolojilerinin gelişimini hızlandırdı.
+        </p>
+        <blockquote>“Mühendislik, hayal gücü ve hesaplama ile birleştiğinde dünyayı değiştirir.”</blockquote>
+      </div>
+    </article>
+  </main>
+
+  <script>
+    const content = {
+      hikaye: {
+        header: "Kısa Hikâye",
+        html: `
+          <div class="body">
+            <h2>Erken yaşam ve eğitim</h2>
+            <p>
+              Konrad Zuse, Almanya’da doğdu ve mühendislik eğitimini tamamladı. Mekanik ve elektriksel sistemler üzerine yoğunlaştı.
+            </p>
+            <h2>Z3 ve programlanabilirlik</h2>
+            <p>
+              1941’de Z3’ü geliştirdi; bu cihaz, elektrikli ve programlanabilir ilk bilgisayarlardan biri olarak kabul edildi.
+            </p>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="time">1910</span>
+                <p class="desc">Almanya’da doğum.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1936</span>
+                <p class="desc">İlk hesaplama makineleri üzerinde çalışmalar.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1941</span>
+                <p class="desc">Z3’ü tamamlayarak programlanabilir bilgisayar dönemini başlattı.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1995</span>
+                <p class="desc">Almanya’da vefat etti, mirası bilgisayar mühendisliğinde yaşadı.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      calismalar: {
+        header: "Çalışmalar ve Katkılar",
+        html: `
+          <div class="body">
+            <h2>Z3 ve bilgisayar tarihi</h2>
+            <p>
+              Zuse’nin Z3’ü, modern dijital bilgisayarların temelini attı ve algoritmaların uygulanabilirliğini gösterdi.
+            </p>
+            <h2>Programlama ve yazılım öncülüğü</h2>
+            <p>
+              Zuse, programlama kavramlarını da geliştirdi ve ilk yüksek seviyeli programlama dillerinden biri olan Plankalkül üzerinde çalıştı.
+            </p>
+            <ul class="list">
+              <li>Z3: Dünyanın ilk programlanabilir bilgisayarı</li>
+              <li>Plankalkül ve erken yazılım tasarımı</li>
+              <li>Bilgisayar biliminin temellerine katkı</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    function loadSection(key) {
+      const container = document.getElementById('dynamic');
+      const item = content[key];
+      if (!item) return;
+      container.classList.remove('show');
+      setTimeout(() => {
+        container.innerHTML = `<header>${item.header}</header>${item.html}`;
+        container.classList.add('show');
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+
+    loadSection('hikaye');
+  </script>
+
+  <a href="giris.html" class="ana">Ana Sayfa</a>
+
+</body>
+</html>

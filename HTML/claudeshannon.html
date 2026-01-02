@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Claude Shannon: Bilgi Teorisinin Babası</title>
+  <style>
+    :root{
+      --bg: linear-gradient(180deg, #0f172a, #1e293b);
+      --glass: rgba(255,255,255,0.22);
+      --card: rgba(255,255,255,0.75);
+      --accent: #38bdf8;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .navbar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; gap: 1rem; align-items: center;
+      padding: 0.75rem 1rem;
+      background: var(--glass);
+      backdrop-filter: blur(10px) saturate(1.1);
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+    }
+    .navbar a { color: #fff; text-decoration: none; font-weight: 600; opacity: 0.92; }
+    .navbar a:hover { opacity: 1; }
+
+    .wrap { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+
+    .hero {
+      display: grid; grid-template-columns: 220px 1fr; gap: 1.25rem;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    .hero img {
+      width: 100%; aspect-ratio: 1/1; object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.55);
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+    }
+
+    .hero h1 {
+      margin: 0 0 0.4rem; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+      line-height: 1.15; letter-spacing: -0.01em;
+    }
+
+    .badges { margin: 0.25rem 0 0.5rem; }
+    .badge {
+      display: inline-block; padding: 0.35rem 0.6rem; margin-right: 0.4rem; margin-bottom: 0.4rem;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(56,189,248,0.45); font-size: 0.75rem;
+    }
+
+    .muted { color: #e2e8f0; }
+
+    .card {
+      margin-top: 1.25rem;
+      background: var(--card);
+      color: var(--text);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.5);
+      overflow: hidden;
+    }
+    .card header {
+      padding: 0.9rem 1.25rem;
+      background: rgba(56,189,248,0.12);
+      color: #fff;
+      font-weight: 700;
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+    .card .body { padding: 1rem 1.25rem; }
+
+    .timeline { display: grid; gap: 0.75rem; margin-top: 0.5rem; }
+    .timeline-item {
+      display: grid; grid-template-columns: 110px 1fr; gap: 0.75rem;
+      align-items: start;
+    }
+    .time {
+      background: #e0f2fe; color: #0369a1; padding: 0.35rem 0.5rem; border-radius: 8px; font-weight: 700;
+      text-align: center;
+    }
+
+    blockquote {
+      margin: 0.9rem 0; padding: 0.75rem 1rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(56,189,248,0.08);
+      color: #1f2937;
+    }
+
+    .fade { opacity: 0; transform: translateY(12px); transition: opacity 0.5s, transform 0.5s; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 780px) {
+      .hero { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+    }
+
+    .prev{
+      position: fixed; bottom: 20px; left:20px;
+      color:#fff; font-size: 18px; text-decoration: none;
+    }
+    .ana{
+      position: fixed; bottom: 20px; right: 20px;
+      font-size: 18px; color: white; text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <img src="resimler/claudeshannon.png" alt="Claude Shannon">
+      <div>
+        <h1>Claude Shannon: Bilgi Teorisinin Babası</h1>
+        <div class="badges">
+          <span class="badge">Bilgi Teorisi</span>
+          <span class="badge">Kriptografi</span>
+          <span class="badge">Dijital devrim</span>
+        </div>
+        <p class="muted">1916–2001 • ABD • Matematikçi, Elektrik Mühendisi, Kriptograf</p>
+      </div>
+    </section>
+
+    <article id="dynamic" class="card fade"></article>
+
+    <article id="etki" class="card">
+      <header>Miras ve Etki</header>
+      <div class="body">
+        <h3>Modern dijital dünyanın temeli</h3>
+        <p>
+          Shannon’ın geliştirdiği bilgi teorisi; internetten cep telefonlarına, veri sıkıştırmadan dijital sinyallere kadar tüm modern iletişimin temelini oluşturdu.
+        </p>
+        <blockquote>“Bilgi, belirsizliğin azaltılmasıdır.”</blockquote>
+      </div>
+    </article>
+
+    <a href="giris.html" class="ana">Ana Sayfa</a>
+    <a href="kisiler.html" class="prev">Önceki Sayfa</a>
+  </main>
+
+  <script>
+    const content = {
+      hikaye: {
+        header: "Hayatı ve Bilimsel Yolculuğu",
+        html: `
+          <div class="body">
+            <h2>Erken Yaşamı</h2>
+            <p>
+              Claude Shannon, küçük yaşlarda elektronik cihazlar geliştiren, mekanik aletleri söküp takan meraklı bir çocuktu.
+              MIT’de hem matematik hem elektrik mühendisliği okudu.
+            </p>
+
+            <h2>Boole Cebiri ile Elektriğin Birleştirilmesi</h2>
+            <p>
+              1937’deki yüksek lisans tezi, elektronik devreler ile Boole cebiri arasındaki ilişkiyi kurarak
+              modern dijital devre tasarımının temelini attı.
+            </p>
+
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="time">1916</span>
+                <p>Doğum — Michigan, ABD.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1937</span>
+                <p>Dijital devre mantığını açıklayan devrim niteliğinde tez.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1948</span>
+                <p>Bilgi teorisinin doğuşu: “A Mathematical Theory of Communication”.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+
+      calismalar: {
+        header: "Çalışmaları",
+        html: `
+          <div class="body">
+            <h2>Bilgi Teorisi</h2>
+            <p>
+              Shannon’ın geliştirdiği bilgi ölçüsü (bit), iletişim kanallarının kapasitesi,
+              gürültü, hata düzeltme kodları ve veri sıkıştırma teknikleri modern iletişimin temelini oluşturdu.
+            </p>
+
+            <h2>Kriptografi</h2>
+            <p>
+              II. Dünya Savaşı sırasında gizli şifreleme sistemleri üzerinde çalıştı ve günümüzde kullanılan
+              birçok kriptografik prensip onun çalışmalarına dayanır.
+            </p>
+
+            <ul class="list">
+              <li>Dijital devre mantığı</li>
+              <li>Bilgi ölçüsü (bit)</li>
+              <li>Kanal kapasitesi formülü</li>
+              <li>Gürültü ve hata düzeltme</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    function loadSection(key) {
+      const container = document.getElementById('dynamic');
+      const item = content[key];
+      if (!item) return;
+      container.classList.remove('show');
+      setTimeout(() => {
+        container.innerHTML = `<header>${item.header}</header>${item.html}`;
+        container.classList.add('show');
+      }, 200);
+    }
+
+    loadSection('hikaye');
+  </script>
+
+</body>
+</html>

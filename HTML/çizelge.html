@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Teknolojinin Evrimi - Zaman Çizelgesi</title>
+
+<style>
+/* Menü */
+.menu {
+  position: fixed;
+  top:0; left:0; width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 20px; background-color: rgba(15,23,42,0.5); backdrop-filter:blur(8px);
+  z-index:1000;
+}
+.menu .logo-container {
+  display:flex; align-items:center; gap:10px;
+}
+.menu a.logo-container { text-decoration:none; }
+.menu .logo { height:45px; object-fit:contain;}
+.menu .site-title { font-size:18px; font-weight:700; color:white; letter-spacing:1px; white-space:nowrap; }
+
+.menu .links a {
+  margin-left:15px; text-decoration:none; color:white; font-size:16px; font-weight:500;
+}
+.menu .links a:hover { text-decoration: underline; }
+.menu-toggle { display:none; font-size:26px; color:white; background:none; border:none; cursor:pointer; }
+@media(max-width:768px){
+  .menu .links { display:none; flex-direction:column; position:absolute; top:60px; right:20px; background: rgba(15,23,42,0.9); padding:10px; border-radius:8px; }
+  .menu .links.show { display:flex; }
+  .menu-toggle { display:block; }
+}
+
+/* Renkler ve temel stil */
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #60a5fa;
+  --accent2: #34d399;
+  --line: #1f2937;
+  --shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  background: radial-gradient(1200px 600px at 20% 0%, #0b1228 0%, var(--bg) 50%, #0b1228 100%);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 140px 20px 64px; /* Menü üstünde kalmaması için padding */
+}
+
+header { text-align:center; margin-bottom:24px; }
+header h1 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); margin:0 0 8px; }
+header p { margin:0 auto; max-width:760px; color: var(--muted); font-size: clamp(0.95rem, 1.6vw, 1.05rem); }
+
+/* Timeline */
+.timeline { position: relative; margin: 40px auto; padding: 0 0 40px; }
+.timeline::before {
+  content:""; position:absolute; left:50%; top:0; width:2px; height:100%;
+  background: linear-gradient(180deg, transparent 0%, var(--line) 12%, var(--line) 88%, transparent 100%);
+  transform: translateX(-50%);
+}
+
+.item { position: relative; display: grid; grid-template-columns: 1fr; gap:16px; margin:28px 0; }
+.dot {
+  position:absolute; left:50%; top:8px; transform: translate(-50%, -50%);
+  width:16px; height:16px; border-radius:50%;
+  background: radial-gradient(circle at 40% 40%, #fff 0%, var(--accent) 35%, #1e3a8a 100%);
+  box-shadow:0 0 0 4px rgba(96,165,250,0.15),0 0 22px rgba(96,165,250,0.35);
+}
+.card {
+  background: linear-gradient(180deg, rgba(17,24,39,0.85), rgba(17,24,39,0.95));
+  border:1px solid #1f2937; border-radius:14px; padding:18px 20px;
+  backdrop-filter:blur(3px); box-shadow: var(--shadow);
+}
+.left { margin-right:52%; }
+.right { margin-left:52%; }
+
+.era { font-weight:600; color: var(--accent2); letter-spacing:0.2px; font-size:0.95rem; }
+.title { margin:6px 0 8px; font-size:1.15rem; font-weight:700; }
+.desc { color: var(--muted); margin:0; font-size:0.98rem; }
+.tags { margin-top:10px; display:flex; flex-wrap:wrap; gap:8px; }
+.tag { padding:6px 10px; border-radius:999px; font-size:0.82rem; color:#c7d2fe; background: linear-gradient(180deg, rgba(59,130,246,0.25), rgba(59,130,246,0.12)); border:1px solid rgba(59,130,246,0.35); }
+.tag.alt { color:#d1fae5; background: linear-gradient(180deg, rgba(52,211,153,0.25), rgba(52,211,153,0.12)); border:1px solid rgba(52,211,153,0.35); }
+
+@media (max-width:820px) {
+  .timeline::before { left:12px; transform:none; }
+  .dot { left:12px; transform: translate(-50%, -50%); }
+  .left, .right { margin:0 0 0 36px; }
+  .item { margin:18px 0; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="menu">
+  <a href="giris.html" class="logo-container">
+    <img src="resimler/LOGO.png" alt="Logo" class="logo">
+    <span class="site-title">TEKNOLOJİNİN EVRİMİ</span>
+  </a>
+
+  <nav class="links" id="navLinks">
+    <a href="birinci.html">Teknolojinin Etkileri</a>
+    <a href="kisiler.html">Teknolojiyi Şekillendirenler</a>
+    <a href="çizelge.html">Zaman Çizelgesi</a>
+  </nav>
+
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+
+<div class="container">
+  <header>
+    <h1>Teknolojinin Evrimi</h1>
+    <p>İlk aletlerden yapay zekâ ve uzay araştırmalarına uzanan yolculuk: toplumsal değişim, üretkenlik ve etik sorular.</p>
+  </header>
+
+  <section class="timeline">
+
+    <!-- Taş Çağı -->
+    <article class="item">
+      <span class="dot"></span>
+      <div class="card left">
+        <div class="era">Taş Çağı</div>
+        <div class="title">İlk aletler ve ateşin kullanımı</div>
+        <p class="desc">Taş aletler, avcılık ve günlük işler için kritik oldu; ateş, ısınma ve pişirme ile toplumsal yaşamı kökten etkiledi.</p>
+        <div class="tags">
+          <span class="tag">Taş aletler</span>
+          <span class="tag alt">Ateş</span>
+          <span class="tag">Yerleşik düzen</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Tekerlek ve Tarım -->
+    <article class="item">
+      <span class="dot"></span>
+      <div class="card right">
+        <div class="era">Erken Uygarlıklar</div>
+        <div class="title">Tekerlek ve tarım devrimi</div>
+        <p class="desc">Tekerlek, ulaşımı ve üretimi hızlandırdı; tarım fazlası, şehirleşmeyi ve işbölümünü mümkün kıldı.</p>
+        <div class="tags">
+          <span class="tag alt">Tekerlek</span>
+          <span class="tag">Sulama</span>
+          <span class="tag">Şehirleşme</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Matbaa -->
+    <article class="item">
+      <span class="dot"></span>
+      <div class="card left">
+        <div class="era">Orta Çağ / Rönesans</div>
+        <div class="title">Matbaa ve bilginin yayılımı</div>
+        <p class="desc">Matbaa, eğitimi ve bilimi hızla yaygınlaştırdı; fikirler daha geniş kitlelere ulaştı.</p>
+        <div class="tags">
+          <span class="tag">Matbaa</span>
+          <span class="tag alt">Eğitim</span>
+          <span class="tag">Bilimsel düşünce</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Sanayi Devrimi -->
+    <article class="item">
+      <span class="dot"></span>
+      <div class="card right">
+        <div class="era">18.–19. Yüzyıl</div>
+        <div class="title">Sanayi devrimi ve mekanik üretim</div>
+        <p class="desc">Buhar makinesi ve fabrikalar, seri üretimi ve kentleşmeyi hızlandırdı; ekonomik yapı dönüştü.</p>
+        <div class="tags">
+          <span class="tag alt">Buhar makinesi</span>
+          <span class="tag">Fabrikalar</span>
+          <span class="tag">Seri üretim</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Elektrik ve İletişim -->
+    <article class="item">
+      <span class="dot"></span>
+      <div class="card left">
+        <div class="era">20. Yüzyıl Başları</div>
+        <div class="title">Elektrik, telefon, radyo ve televizyon</div>
+        <p class="desc">Elektrik ve kitle iletişim araçları, yaşam standartlarını ve küresel bağlantıyı yeni bir seviyeye taşıdı.</p>
+        <div class="tags">
+          <span class="tag">Elektrik</span>
+          <span class="tag alt">Telefon</span>
+          <span class="tag">Radyo & TV</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Bilgisayarlar -->
+    <article class="item">
+      <span class="dot"></span>
+      <div class="card right">
+        <div class="era">20. Yüzyıl Ortaları</div>
+        <div class="title">Bilgisayar devrimi</div>
+        <p class="desc">Hesaplama gücü bilimden günlük yaşama yayıldı; yazılım ekosistemleri ortaya çıktı.</p>
+        <div class="tags">
+          <span class="tag alt">Donanım</span>
+          <span class="tag">Yazılım</span>
+          <span class="tag">Otomasyon</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- İnternet -->
+    <article class="item">
+      <span class="dot"></span>
+      <div class="card left">
+        <div class="era">1990’lar–2000’ler</div>
+        <div class="title">İnternet ve dijital dönüşüm</div>
+        <p class="desc">Bilgiye anında erişim, yeni iş modelleri ve küresel iletişim; web, mobil ve bulut ekosistemleri.</p>
+        <div class="tags">
+          <span class="tag">Web</span>
+          <span class="tag alt">Mobil</span>
+          <span class="tag">Bulut</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Yapay Zekâ ve IoT -->
+    <article class="item">
+      <span class="dot"></span>
+      <div class="card right">
+        <div class="era">Günümüz</div>
+        <div class="title">Yapay zekâ, IoT ve biyoteknoloji</div>
+        <p class="desc">Veri, sensörler ve öğrenen sistemler üretkenliği artırıyor; etik, mahremiyet ve sorumlu tasarım öne çıkıyor.</p>
+        <div class="tags">
+          <span class="tag alt">Yapay zekâ</span>
+          <span class="tag">IoT</span>
+          <span class="tag">Biyoteknoloji</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Uzay Araştırmaları -->
+    <article class="item">
+      <span class="dot"></span>
+      <div class="card left">
+        <div class="era">Ufuk</div>
+        <div class="title">Uzay araştırmaları ve yarının teknolojileri</div>
+        <p class="desc">Derin uzay görevleri ve ileri malzemeler, yeni keşiflerle teknolojik sınırları genişletiyor.</p>
+        <div class="tags">
+          <span class="tag">Uzay</span>
+          <span class="tag alt">İleri malzemeler</span>
+          <span class="tag">Keşif</span>
+        </div>
+      </div>
+    </article>
+
+  </section>
+</div>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teknolojinin Etkileri</title>
+
+<!-- ÜST MENÜDEN GELEN STYLES (AYNEN EKLENDİ) -->
+<style>
+:root{
+  --bg-1:#04102a;
+  --bg-2:#061431;
+  --card:#071a34;
+  --muted:#9db0c9;
+  --text:#e7f3ff;
+  --accent1:#5ce0ff;
+  --accent2:#8a6bff;
+  --glass: rgba(255,255,255,0.02);
+  --radius:18px;
+}
+
+/* Menü */
+.menu {
+  position: fixed;
+  top:0; left:0; width:100%;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:10px 20px; background-color: rgba(15,23,42,0.5); backdrop-filter:blur(8px);
+  z-index:1000;
+}
+.menu .logo-container {
+  display:flex; align-items:center; gap:10px;
+}
+.menu .logo { height:45px; object-fit:contain; }
+.menu .site-title { font-size:18px; font-weight:700; color:white; letter-spacing:1px; white-space:nowrap; }
+
+.menu .links a {
+  margin-left:15px;
+  text-decoration:none;
+  color:white;
+  font-size:16px;
+  font-weight:500;
+}
+.menu .links a:hover { text-decoration: underline; }
+.menu-toggle { display:none; font-size:26px; color:white; background:none; border:none; cursor:pointer; }
+@media(max-width:768px){
+  .menu .links { display:none; flex-direction:column; position:absolute; top:60px; right:20px; background: rgba(15,23,42,0.9); padding:10px; border-radius:8px; }
+  .menu .links.show { display:flex; }
+  .menu-toggle { display:block; }
+}
+</style>
+
+<!-- SENİN SAYFANIN STYLES (AYNEN BIRAKILDI) -->
+<style>
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f172a, #1e293b);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --accent: #60a5fa;
+    --accent2: #34d399;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --radius: 16px;
+    --shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 100px 20px; /* Menü sabit olduğu için boşluk artırıldı */
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Kart stili */
+.card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+.card h3 {
+    color: var(--accent);
+    margin-bottom: 12px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.card p {
+    color: var(--text);
+    font-size: 1.05rem;
+}
+
+.icon {
+    font-size: 1.3rem;
+}
+
+@media(max-width:600px){
+    .card h3 { font-size: 1.3rem; }
+    .card p { font-size: 1rem; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ÜST SABİT MENÜ (DÜZENLENMİŞ HÂLİ) -->
+<header class="menu">
+  <a href="giris.html" class="logo-container" style="text-decoration:none;">
+    <img src="resimler/LOGO.png" alt="Logo" class="logo">
+    <span class="site-title">TEKNOLOJİNİN EVRİMİ</span>
+  </a>
+
+  <nav class="links" id="navLinks">
+    <a href="birinci.html">Teknolojinin Etkileri</a>
+    <a href="kisiler.html">Teknolojiyi Şekillendirenler</a>
+    <a href="çizelge.html">Zaman Çizelgesi</a>
+  </nav>
+
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h3><span class="icon">📘</span> Teknolojinin Tanımı</h3>
+        <p>Teknoloji, insan ihtiyaçlarını karşılamak ve sorunları çözmek için geliştirilen yöntemler, araçlar ve sistemlerin tümüdür.</p>
+    </div>
+
+    <div class="card">
+        <h3><span class="icon">🌍</span> Topluma Etkisi</h3>
+        <p>Teknoloji sadece üretim ve iletişimde değil, kültür, eğitim, sağlık gibi alanlarda da dönüşüme yol açar.</p>
+    </div>
+
+    <div class="card">
+        <h3><span class="icon">🧠</span> Eğitimde Teknoloji</h3>
+        <p>Akıllı tahtalar, çevrimiçi dersler, simülasyonlar ve uygulamalar öğrenmeyi daha kişisel hale getirir.</p>
+    </div>
+
+    <div class="card">
+        <h3><span class="icon">🏥</span> Sağlıkta Teknoloji</h3>
+        <p>Modern tıp cihazları ve yapay zekâ, teşhis ve tedavide büyük ilerlemeler sağlar.</p>
+    </div>
+
+    <div class="card">
+        <h3><span class="icon">🔮</span> Geleceğin Teknolojileri</h3>
+        <p>Yapay zekâ, IoT, biyoteknoloji ve uzay araştırmaları geleceği şekillendirecek.</p>
+    </div>
+
+    <div class="card">
+        <h3><span class="icon">⚖</span> Avantajlar ve Dezavantajlar</h3>
+        <p>Teknoloji hem fayda hem risk taşır. Dengeli ve bilinçli kullanım önemlidir.</p>
+    </div>
+
+    <div class="card">
+        <h3><span class="icon">🎭</span> Kültürel Değişim</h3>
+        <p>Teknoloji, kültürü ve etkileşim biçimlerini dönüştürür; çeşitliliği artırır.</p>
+    </div>
+</div>
+
+<!-- Menü Scripti -->
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
+</script>
+
+</body>
+</html>

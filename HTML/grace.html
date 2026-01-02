@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grace Hopper: Kodun Amiral’i</title>
+  <style>
+    :root{
+      --bg: linear-gradient(180deg, #0f172a, #1e293b);
+      --glass: rgba(255,255,255,0.22);
+      --card: rgba(255,255,255,0.92);
+      --accent: #ec4899; /* pembe vurgu */
+      --text: #0f172a;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; height: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: #fff;
+      line-height: 1.65;
+    }
+    .navbar {
+      position: sticky; top: 0;
+      display: flex; gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+    }
+    .navbar a { color: #fff; text-decoration: none; font-weight: 600; }
+    .wrap { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    .hero {
+      display: grid; grid-template-columns: 240px 1fr; gap: 1.25rem;
+      background: var(--glass); backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.4); border-radius: 18px; padding: 1rem;
+    }
+    .hero img { width: 100%; border-radius: 14px; border: 1px solid rgba(255,255,255,0.55); }
+    .hero h1 { margin: 0 0 0.4rem; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem); }
+    .badge { display:inline-block; padding:0.35rem 0.6rem; margin:0.2rem 0.4rem 0.2rem 0;
+             border-radius:999px; border:1px solid rgba(255,255,255,0.6);
+             background: rgba(236,72,153,0.45); font-size:0.75rem; }
+    .muted { color:#e2e8f0; }
+    .card { margin-top:1.25rem; background:var(--card); color:var(--text); border-radius:18px;
+            border:1px solid rgba(255,255,255,0.5); overflow:hidden; }
+    .card header { padding:0.9rem 1.25rem; background:rgba(236,72,153,0.12); color:#fff; font-weight:700;
+                   border-bottom:1px dashed rgba(255,255,255,0.35); }
+    .card .body { padding:1rem 1.25rem; }
+    .card h2 { color:var(--accent); font-size:1.2rem; margin:0.25rem 0 0.6rem; }
+    .long { max-height:60vh; overflow-y:auto; }
+    .actions { display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.5rem; }
+    .btn { border:none; cursor:pointer; border-radius:8px; padding:0.55rem 0.9rem; font-weight:600;
+           background:#ec4899; color:#fff; }
+    .btn.outline { background:transparent; color:#ec4899; border:2px solid #ec4899; }
+    .fade { opacity:0; transform:translateY(12px); transition:opacity 0.5s, transform 0.5s; }
+    .fade.show { opacity:1; transform:translateY(0); }
+    @media (max-width:780px){ .hero{ grid-template-columns:1fr; } .long{ max-height:none; } }
+     .prev{
+        position: fixed;
+        bottom: 20px;
+        left:20px;
+        color:#fff;
+        font-size: 18px;
+        text-decoration: none;
+    }
+    .ana{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        color: white;
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <
+
+  <main class="wrap">
+    <section class="hero">
+      <img src="Grace Hopper.png">
+      <div>
+        <h1>Grace Hopper: Kodun Amiral’i</h1>
+        <span class="badge">COBOL</span>
+        <span class="badge">Derleyici</span>
+        <span class="badge">US Navy</span>
+        <p class="muted">1906–1992 • ABD • Bilgisayar bilimci ve amiral</p>
+       
+      </div>
+    </section>
+
+    <article id="dynamic" class="card fade"></article>
+
+    <article id="miras" class="card">
+      <header>Miras ve Etki</header>
+      <div class="body">
+        <h2>Programlamanın öncüsü</h2>
+        <div class="long">
+          <p>Grace Hopper, derleyici kavramını geliştirerek yüksek seviyeli programlama dillerinin önünü açtı. COBOL’un geliştirilmesinde kritik rol oynadı.</p>
+          <p>ABD Donanması’nda amiral rütbesine yükseldi ve bilgisayar biliminin yaygınlaşmasına öncülük etti.</p>
+        </div>
+      </div>
+    </article>
+
+   
+  </main>
+
+  <script>
+    const content = {
+      biyografi: {
+        header: "Kısa biyografi",
+        html: `
+          <div class="body">
+            <h2>Erken yaşam ve eğitim</h2>
+            <div class="long">
+              <p>Grace Hopper, 1906’da New York’ta doğdu. Matematik ve fizik eğitimi aldı, Yale Üniversitesi’nde doktora yaptı.</p>
+              <p>II. Dünya Savaşı sırasında ABD Donanması’na katıldı ve bilgisayar projelerinde görev aldı.</p>
+            </div>
+          </div>
+        `
+      },
+      calismalar: {
+        header: "Çalışmalar ve katkılar",
+        html: `
+          <div class="body">
+            <h2>Derleyici ve COBOL</h2>
+            <div class="long">
+              <p>Grace Hopper, ilk derleyicilerden birini geliştirdi. Bu yenilik, programcıların makine dilinden bağımsız çalışmasını sağladı.</p>
+              <p>COBOL dilinin geliştirilmesinde liderlik yaptı; bu dil iş dünyasında uzun yıllar kullanıldı.</p>
+              <p>“Debugging” terimini popülerleştirdi; bir bilgisayardan böcek çıkarılmasıyla ilgili ünlü anekdot ona atfedilir.</p>
+            </div>
+          </div>
+        `
+        }
+    }
+  </script>
+  <body>
+    <a href="giris.html" class="ana">Ana Sayfa</a>
+    <a href="kisiler.html" class="prev">Önceki Sayfa</a>
+  </body>
+</body>
+</html>

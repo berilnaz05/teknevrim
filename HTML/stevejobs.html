@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Steve Jobs: Teknoloji ve Yeniliğin Simgesi</title>
+  <style>
+    :root{
+      --bg: linear-gradient(180deg, #0f172a, #1e293b);
+      --glass: rgba(255,255,255,0.22);
+      --card: rgba(255,255,255,0.75);
+      --accent: #2563eb;
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      color: #fff;
+      line-height: 1.6;
+    }
+    .wrap { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    .hero {
+      display: grid; grid-template-columns: 220px 1fr; gap: 1.25rem;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+    .hero img {
+      width: 100%; aspect-ratio: 1/1; object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.55);
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+    }
+    .hero h1 {
+      margin: 0 0 0.4rem; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+      line-height: 1.15; letter-spacing: -0.01em;
+    }
+    .badges { margin: 0.25rem 0 0.5rem; }
+    .badge {
+      display: inline-block; padding: 0.35rem 0.6rem; margin-right: 0.4rem; margin-bottom: 0.4rem;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(37,99,235,0.45); font-size: 0.75rem;
+    }
+    .muted { color: #e2e8f0; }
+
+    .card {
+      margin-top: 1.25rem;
+      background: var(--card);
+      color: var(--text);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.5);
+      overflow: hidden;
+    }
+    .card header {
+      padding: 0.9rem 1.25rem;
+      background: rgba(37,99,235,0.12);
+      color: #fff;
+      font-weight: 700;
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+    .card .body { padding: 1rem 1.25rem; }
+    .card h2 { color: var(--accent); font-size: 1.25rem; line-height: 1.25; margin: 0 0 0.5rem; }
+    .card p { margin: 0.3rem 0 0.8rem; }
+    .list { display: grid; gap: 0.6rem; margin-top: 0.6rem; }
+    .list li { list-style: none; padding-left: 0.5rem; border-left: 3px solid #60a5fa; }
+    .timeline { display: grid; gap: 0.75rem; margin-top: 0.5rem; }
+    .timeline-item { display: grid; grid-template-columns: 110px 1fr; gap: 0.75rem; align-items: start; }
+    .time { background: #dbeafe; color: #1e3a8a; padding: 0.35rem 0.5rem; border-radius: 8px; font-weight: 700; text-align: center; min-width: 90px; }
+    .desc { color: var(--text); }
+    blockquote { margin: 0.9rem 0; padding: 0.75rem 1rem; border-left: 4px solid var(--accent); background: rgba(37,99,235,0.08); color: #1f2937; }
+    .fade { opacity: 0; transform: translateY(12px); transition: opacity 0.5s, transform 0.5s; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+    @media (max-width: 780px) { .hero { grid-template-columns: 1fr; } .timeline-item { grid-template-columns: 1fr; } }
+    .ana { position: fixed; bottom: 20px; right: 20px; font-size: 18px; color: white; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <main class="wrap">
+    <section class="hero">
+      <img src="resimler/SteveJobs.png" alt="Steve Jobs">
+      <div>
+        <h1>Steve Jobs: Teknoloji ve Yeniliğin Simgesi</h1>
+        <div class="badges">
+          <span class="badge">Apple</span>
+          <span class="badge">iPhone • Mac</span>
+          <span class="badge">Yenilikçilik</span>
+        </div>
+        <p class="muted">1955–2011 • Kaliforniya & ABD • Teknoloji girişimcisi ve yenilikçi</p>
+      </div>
+    </section>
+
+    <!-- Dinamik içerik bölümü -->
+    <article id="dynamic" class="card fade" aria-live="polite" aria-atomic="true"></article>
+
+    <!-- Statik ek içerik -->
+    <article id="etki" class="card">
+      <header>Miras ve Etki</header>
+      <div class="body">
+        <h2>Teknolojiyi halkın hayatına taşımak</h2>
+        <p>
+          Steve Jobs, Apple’ı kurarak bilgisayar, telefon ve müzik sektöründe devrim yarattı. 
+          Tasarım ve kullanıcı deneyimine odaklanarak teknolojiyi estetik ve kullanılabilir hâle getirdi.
+        </p>
+        <blockquote>“İnovasyon, lider ile takipçi arasındaki farkı yaratır.”</blockquote>
+      </div>
+    </article>
+
+  </main>
+
+  <script>
+    const content = {
+      hikaye: {
+        header: "Kısa hikâye",
+        html: `
+          <div class="body">
+            <h2>Erken yaşam ve eğitim</h2>
+            <p>
+              Steve Jobs, Kaliforniya’da doğdu. Genç yaşta elektronik ve bilgisayar teknolojilerine ilgi duydu. 
+              Reed College’ı kısa süreliğine okuduktan sonra teknoloji dünyasına atıldı.
+            </p>
+            <h2>Apple ve devrim</h2>
+            <p>
+              Steve Jobs, Steve Wozniak ile birlikte Apple’ı kurdu. Macintosh, iPod, iPhone ve iPad gibi ürünlerle teknolojiyi yeniden tanımladı.
+            </p>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="time">1955</span>
+                <p class="desc">Kaliforniya’da doğum.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1976</span>
+                <p class="desc">Apple’ı Steve Wozniak ile kurdu.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1984</span>
+                <p class="desc">Macintosh’un lansmanı.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">2007</span>
+                <p class="desc">iPhone’un tanıtımı.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      calismalar: {
+        header: "Çalışmalar ve katkılar",
+        html: `
+          <div class="body">
+            <h2>Ürün tasarımı ve inovasyon</h2>
+            <p>
+              Steve Jobs, ürün tasarımında estetik ve kullanım kolaylığını ön planda tutarak tüketici elektroniğinde devrim yarattı.
+            </p>
+            <h2>Apple ekosistemi</h2>
+            <p>
+              Yazılım, donanım ve servisleri bir araya getirerek güçlü bir ekosistem oluşturdu. Bu yaklaşım modern teknoloji şirketlerine ilham verdi.
+            </p>
+            <ul class="list">
+              <li>Apple ürünlerinin inovatif tasarımı</li>
+              <li>iPhone, iPad, Mac gibi ikonik cihazlar</li>
+              <li>Teknoloji ve tasarımın birleştirilmesi</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    function loadSection(key) {
+      const container = document.getElementById('dynamic');
+      const item = content[key];
+      if (!item) return;
+      container.classList.remove('show');
+      setTimeout(() => {
+        container.innerHTML = `
+          <header>${item.header}</header>
+          ${item.html}
+        `;
+        container.classList.add('show');
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+
+    loadSection('hikaye');
+  </script>
+
+  <a href="giris.html" class="ana">Ana Sayfa</a>
+
+</body>
+</html>

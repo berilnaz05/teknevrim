@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Alan Turing: Modern Bilgisayar Biliminin Temelleri</title>
+  <style>
+    :root{
+      --bg: linear-gradient(180deg, #0f172a, #1e293b);
+      --glass: rgba(255,255,255,0.22);
+      --card: rgba(255,255,255,0.75);
+      --accent: #2563eb; /* mavi vurgu */
+      --text: #0f172a;
+      --muted: #475569;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      min-height: 100vh;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    /* Üst şeffaf çubuk */
+    .navbar {
+      position: sticky; top: 0; z-index: 10;
+      display: flex; gap: 1rem; align-items: center;
+      padding: 0.75rem 1rem;
+      background: var(--glass);
+      backdrop-filter: blur(10px) saturate(1.1);
+      border-bottom: 1px solid rgba(255,255,255,0.35);
+    }
+    .navbar a { color: #fff; text-decoration: none; font-weight: 600; opacity: 0.92; }
+    .navbar a:hover { opacity: 1; }
+
+    /* Sayfa düzeni */
+    .wrap { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    .hero {
+      display: grid; grid-template-columns: 220px 1fr; gap: 1.25rem;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+    .hero img {
+      width: 100%; aspect-ratio: 1/1; object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.55);
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+    }
+    .hero h1 {
+      margin: 0 0 0.4rem; font-size: clamp(1.6rem, 1.2rem + 2vw, 2.4rem);
+      line-height: 1.15; letter-spacing: -0.01em;
+    }
+    .badges { margin: 0.25rem 0 0.5rem; }
+    .badge {
+      display: inline-block; padding: 0.35rem 0.6rem; margin-right: 0.4rem; margin-bottom: 0.4rem;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.6);
+      background: rgba(37,99,235,0.45); font-size: 0.75rem;
+    }
+    .muted { color: #e2e8f0; }
+
+    /* İçerik kartları */
+    .card {
+      margin-top: 1.25rem;
+      background: var(--card);
+      color: var(--text);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.5);
+      overflow: hidden;
+    }
+    .card header {
+      padding: 0.9rem 1.25rem;
+      background: rgba(37,99,235,0.12);
+      color: #fff;
+      font-weight: 700;
+      border-bottom: 1px dashed rgba(255,255,255,0.35);
+    }
+    .card .body { padding: 1rem 1.25rem; }
+    .card h2 { color: var(--accent); font-size: 1.25rem; line-height: 1.25; margin: 0 0 0.5rem; }
+    .card p { margin: 0.3rem 0 0.8rem; }
+    .list { display: grid; gap: 0.6rem; margin-top: 0.6rem; }
+    .list li { list-style: none; padding-left: 0.5rem; border-left: 3px solid #60a5fa; }
+
+    /* Zaman çizelgesi */
+    .timeline { display: grid; gap: 0.75rem; margin-top: 0.5rem; }
+    .timeline-item {
+      display: grid; grid-template-columns: 110px 1fr; gap: 0.75rem;
+      align-items: start;
+    }
+    .time {
+      background: #dbeafe; color: #1e3a8a; padding: 0.35rem 0.5rem; border-radius: 8px; font-weight: 700;
+      text-align: center; min-width: 90px;
+    }
+    .desc { color: var(--text); }
+
+    /* Alıntı */
+    blockquote {
+      margin: 0.9rem 0; padding: 0.75rem 1rem;
+      border-left: 4px solid var(--accent);
+      background: rgba(37,99,235,0.08); color: #1f2937;
+    }
+
+    /* Butonlar */
+    .actions { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .btn {
+      border: none; cursor: pointer; border-radius: 8px; padding: 0.55rem 0.9rem; font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary { background: #2563eb; color: #fff; }
+    .btn-outline { background: transparent; color: #2563eb; border: 2px solid #2563eb; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(37,99,235,0.25); }
+
+    /* Animasyonlu bölüm geçişi (SPA hissi) */
+    .fade { opacity: 0; transform: translateY(12px); transition: opacity 0.5s, transform 0.5s; }
+    .fade.show { opacity: 1; transform: translateY(0); }
+
+    /* Responsive */
+    @media (max-width: 780px) {
+      .hero { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; }
+    }
+     .prev{
+        position: fixed;
+        bottom: 20px;
+        left:20px;
+        color:#fff;
+        font-size: 18px;
+        text-decoration: none;
+    }
+    .ana{
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        color: white;
+        text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+ 
+
+  <main class="wrap">
+    <section class="hero">
+      <img src="resimler/alan-turing.jpeg">
+      <div>
+        <h1>Alan Turing: Modern bilgisayar biliminin temelleri</h1>
+        <div class="badges">
+          <span class="badge">Turing Makinesi</span>
+          <span class="badge">Kriptanaliz • Enigma</span>
+          <span class="badge">Turing Testi</span>
+        </div>
+        <p class="muted">1912–1954 • Londra & Bletchley Park • Matematik, mantık ve hesaplama kuramı</p>
+       
+      </div>
+    </section>
+
+    <!-- Dinamik içerik bölümü -->
+    <article id="dynamic" class="card fade" aria-live="polite" aria-atomic="true"></article>
+
+    <!-- Statik ek içerikler -->
+    <article id="etki" class="card">
+      <header>Miras ve etki</header>
+      <div class="body">
+        <h2>Hesaplanabilirlik ve yapay zekâ düşüncesine yön vermek</h2>
+        <p>
+          Turing’in kuramsal çalışmaları, bilgisayarların neyi hesaplayabileceğine dair sınırları tanımladı.
+          Kriptografi çalışmalarıyla bilgi güvenliği ve bilgisayar mühendisliğine pratik katkılar sundu; yapay zekâ tartışmalarında
+          “makineler düşünebilir mi?” sorusunu Turing Testi ile çerçeveledi.
+        </p>
+        <blockquote>“Makine zekâsını insan taklit yeteneği üzerinden sınamak pratik bir yaklaşım sağlar.”</blockquote>
+      </div>
+    </article>
+
+  </main>
+
+  <script>
+    // İçerik veri modeli
+    const content = {
+      hikaye: {
+        header: "Kısa hikâye",
+        html: `
+          <div class="body">
+            <h2>Erken yaşam ve eğitim</h2>
+            <p>
+              Alan Turing, matematik ve mantık alanlarında erken yaşlardan itibaren üstün yetenek sergiledi.
+              Cambridge’deki çalışmaları onu hesaplanabilirlik kuramına ve biçimsel yöntemlere yöneltti.
+            </p>
+            <h2>Kuramdan pratiğe</h2>
+            <p>
+              II. Dünya Savaşı sırasında Bletchley Park’ta kriptanaliz çalışmalarına katıldı ve
+              Enigma şifrelerinin çözümünde kritik rol aldı. Savaş sonrası dönemde otomatik hesaplayıcı tasarımlarına katkı sundu.
+            </p>
+            <div class="timeline">
+              <div class="timeline-item">
+                <span class="time">1912</span>
+                <p class="desc">Londra’da doğum.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1936</span>
+                <p class="desc">Turing Makinesi ve hesaplanabilirlik üzerine makalesini yayımladı.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1939–1945</span>
+                <p class="desc">Bletchley Park’ta kriptanaliz ve Enigma çözümü için çalışmalar.</p>
+              </div>
+              <div class="timeline-item">
+                <span class="time">1950</span>
+                <p class="desc">“Computing Machinery and Intelligence” ve Turing Testi önerisi.</p>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      calismalar: {
+        header: "Çalışmalar ve katkılar",
+        html: `
+          <div class="body">
+            <h2>Turing Makinesi ve hesaplanabilirlik</h2>
+            <p>
+              Turing, ideal bir hesaplama modeli olarak “Turing Makinesi”ni tanımladı. Bu model,
+              algoritmaların neyi yapabileceğine dair kuramsal bir sınır çizerek modern bilgisayar biliminin temelini attı.
+            </p>
+            <h2>Kriptanaliz ve Mühendislik</h2>
+            <p>
+              Savaş yıllarında şifre çözme yöntemlerine sistematik katkılar yaptı; mekanik ve erken elektronik sistemler üzerinde
+              pratik çözümler geliştirdi. Bu çalışmalar, bilgi güvenliği ve hesaplama teknolojilerinin gelişimini hızlandırdı.
+            </p>
+            <h2>Yapay zekâ ve Turing Testi</h2>
+            <p>
+              “Makineler düşünebilir mi?” sorusuna pratik bir değerlendirme olarak Turing Testi’ni önerdi; insan benzeri
+              iletişim sergileyen sistemlerin zekâsını sınamak için etkili bir çerçeve sundu.
+            </p>
+            <ul class="list">
+              <li>Biçimsel hesaplama modeli: Turing Makinesi</li>
+              <li>Şifre çözme ve bilgi güvenliği katkıları</li>
+              <li>Yapay zekâ tartışmalarına metodolojik yaklaşım</li>
+            </ul>
+          </div>
+        `
+      }
+    };
+
+    // Bölüm yükleyici (SPA hissi)
+    function loadSection(key) {
+      const container = document.getElementById('dynamic');
+      const item = content[key];
+      if (!item) return;
+      container.classList.remove('show');
+      setTimeout(() => {
+        container.innerHTML = `
+          <header>${item.header}</header>
+          ${item.html}
+        `;
+        container.classList.add('show');
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 200);
+    }
+
+    // Menü bağlantılarına yumuşak kaydırma
+    document.querySelectorAll('.navbar a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    // Varsayılan olarak hikâyeyi göster
+    loadSection('hikaye');
+  </script>
+   <body>
+    <a href="giris.html" class="ana">Ana Sayfa</a>
+    <a href="kisiler.html" class="prev">Önceki Sayfa</a>
+  </body>
+</body>
+</html>
