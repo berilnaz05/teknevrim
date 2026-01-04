@@ -1,1 +1,4 @@
 teknevrim.xyz
+Host: ns1.natrohost.com
+Type: CNAME
+Target: berilnaz05.github.io
